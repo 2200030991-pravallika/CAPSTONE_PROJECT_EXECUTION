@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-deploy
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: ai-deploy
+        version: blue
+    spec:
+      containers:
+      - name: ai-deploy-app
+        image: ai-deploy-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
